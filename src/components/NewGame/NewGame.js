@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import "./NewGame.css";
-import { throws } from "assert";
+
+//this component is rendered in Header
 
 const NewGame = (props) => {
 	return (

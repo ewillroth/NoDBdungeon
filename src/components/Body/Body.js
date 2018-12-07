@@ -23,25 +23,29 @@ class Body extends Component {
 
 	render() {
 		let display = '';
-        if (this.state.pagetracker===0) {
-            display = <WelcomePage />
-        }
-        else if(this.state.pagetracker===1){
-            display = <CreateCharacter clickEnter={this.props.clickEnter}/>
-        }
-        else if(this.state.pagetracker===2){
-            display = <GetMonster />
-        }
-        else if(this.state.pagetracker===3){
-            display = <TitleBook/>
-        }
+		if (this.state.pagetracker===0) 
+			{display = <WelcomePage />}
+		else if(this.state.pagetracker===1)
+			{display = <CreateCharacter 
+			classname={this.props.classname} 
+			nextClass={this.props.nextClass} 
+			prevClass={this.props.prevClass} 
+			class={this.props.class} 
+			name={this.props.name} 
+			onChange={this.props.onChange} 
+			clickEnter={this.props.clickEnter}
+			/>}
+		else if(this.state.pagetracker===2)
+			{display = <GetMonster />}
+		else if(this.state.pagetracker===3)
+			{display = <TitleBook monsters={this.props.monsters}/>}
 
-        return (
-            <div className="Body">
-                {display}
-            </div>
-        );
-    }
+		return (
+			<div className="Body">
+				{display}
+			</div>
+		);
+	}
 }
 
 export default Body;

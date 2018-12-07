@@ -9,7 +9,7 @@ class CreateCharacter extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-		pagenumber: 0
+			pagenumber: 0
 		}
 		this.clickNext = this.clickNext.bind(this)
 		this.clickPrev = this.clickPrev.bind(this)
@@ -31,14 +31,14 @@ class CreateCharacter extends Component {
 		if (this.state.pagenumber === 0) {
 			display = 
 				<div className="CreateCharacter">
-					<CaptureName />
+					<CaptureName name={this.props.name} onChange={this.props.onChange}/>
 					<NextButton display='Next >'clickNext={this.clickNext}/>
 				</div>;
 		}
 		else if (this.state.pagenumber === 1) {
 			display = 
 				<div className="CreateCharacter">
-					<ChooseClass />
+				<ChooseClass classname={this.props.classname} nextClass={this.props.nextClass} prevClass={this.props.prevClass} class={this.props.class} />
 					<NextButton display='< Previous'clickNext={this.clickPrev} />
 					<NextButton display='Next >' clickNext={this.clickNext} />
 				</div>;
