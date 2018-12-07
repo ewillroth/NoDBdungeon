@@ -1,28 +1,44 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header/Header'
+import Body from './components/Body/Body'
+import { throws } from 'assert';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+	constructor(props){
+		super(props)
+		this.state={
+			pagetracker: 0,
+		}
+		this.clickEnter = this.clickEnter.bind(this)
+		this.newGame = this.newGame.bind(this)
+		this.titleBook = this.titleBook.bind(this)
+	}
+	titleBook(){
+		this.setState({
+			pagetracker: 3,
+		})
+	}
+	newGame(){
+		this.setState({
+			pagetracker: 1,
+		})
+	}
+
+	clickEnter(){
+		this.setState({
+			pagetracker: 2
+		})
+	}
+
+	render() {
+		return (
+			<div className="App">
+				<Header newGame={this.newGame} titleBook={this.titleBook}/>
+				<Body pagetracker={this.state.pagetracker} clickEnter={this.clickEnter}/>
+			</div>
+		);
+	}
 }
 
 export default App;
