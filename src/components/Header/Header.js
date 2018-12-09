@@ -10,7 +10,6 @@ const Header = (props) => {
 	return (
 		<div className="Header">
 			<TitleButton 
-			monsters={props.monsters} 
 			titleBook={props.titleBook}
 			/>
 			<NewGame 
@@ -23,7 +22,6 @@ const Header = (props) => {
 		return (
 			<div className="Header">
 				<TitleButton 
-				monsters={props.monsters} 
 				titleBook={props.titleBook} 
 				/>
 			</div>

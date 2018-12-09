@@ -12,15 +12,15 @@ class App extends Component {
 			name: '',
 			class: 0,
 			classname: 'Warrior',
-			stats: {
-				maxhp: 40,
-				currenthp: 40,
-				str: 3,
-				dex: 2,
-				int: 1,
-				con: 4,
-			},
-			monsters: []			
+			maxhp: 50,
+			currenthp: 50,
+			str: 4,
+			dex: 2,
+			int: 1,
+			con: 5,
+			monsters: [],
+			character: [],
+			level: 1
 		}
 		this.clickEnter = this.clickEnter.bind(this)
 		this.newGame = this.newGame.bind(this)
@@ -30,6 +30,8 @@ class App extends Component {
 		this.prevClass = this.prevClass.bind(this)
 	}
 
+//loads the monsters from the server into the monsters array when component mounts
+
 	componentDidMount() {
 		Axios
 			.get('http://localhost:3030/api/monsters')
@@ -37,58 +39,52 @@ class App extends Component {
 			.catch(err => console.log(err))
 	}
 
+//updates stats on state whenever the class number changes on state- used in ChooseClass
+
 	componentDidUpdate(prevProps,prevState){
 		if(this.state.class!==prevState.class){
 			if (this.state.class === 0) {
 				this.setState({
 					classname: 'Warrior',
-					stats: {
-						maxhp: 40,
-						currenthp: 40,
-						str: 3,
-						dex: 2,
-						int: 1,
-						con: 4,
-					}
+					maxhp: 50,
+					currenthp: 50,
+					str: 4,
+					dex: 2,
+					int: 1,
+					con: 5,
 				})
 			}
 			else if (this.state.class === 1) {
 				this.setState({
 					classname: 'Rogue',
-					stats: {
-						maxhp: 20,
-						currenthp: 20,
-						str: 2,
-						dex: 4,
-						int: 2,
-						con: 2,
-					}
+					maxhp: 30,
+					currenthp: 30,
+					str: 3,
+					dex: 5,
+					int: 2,
+					con: 3,
 				})
 			}
 			else if (this.state.class === 2) {
 				this.setState({
 					classname: 'Wizard',
-					stats: {
-						maxhp: 10,
-						currenthp: 10,
-						str: 2,
-						dex: 1,
-						int: 4,
-						con: 1,
-					}
+					maxhp: 30,
+					currenthp: 30,
+					str: 1,
+					dex: 1,
+					int: 5,
+					con: 2,
 				})
 			}
 			else if (this.state.class === 3) {
 				this.setState({
 					classname: 'Barbarian',
-					stats: {
-						maxhp: 30,
-						currenthp: 30,
-						str: 4,
-						dex: 2,
-						int: 1,
-						con: 3,
-					}
+					maxhp: 40,
+					currenthp: 40,
+					str: 5,
+					dex: 2,
+					int: 1,
+					con: 4,
 				})
 			}
 		}
@@ -99,22 +95,27 @@ class App extends Component {
 			pagetracker: 3,
 		})
 	}
+
+//sets page to CreateCharacter,resets state to the starting state for character selction, and deletes the previous character from the server
+
 	newGame(){
 		this.setState({
 			pagetracker: 1,
+			name: '',
 			class: 0,
 			classname: 'Warrior',
-			stats: {
-				maxhp: 40,
-				currenthp: 40,
-				str: 3,
-				dex: 2,
-				int: 1,
-				con: 4,
-			}
+			maxhp: 40,
+			currenthp: 40,
+			str: 3,
+			dex: 2,
+			int: 1,
+			con: 4,
+			level: 1
 		})
-		Axios.delete('http://localhost:3030/api/character').then(response=>console.log(response.data)).catch(err=>console.log(err))
+		Axios.delete('http://localhost:3030/api/character').then().catch(err=>console.log(err))
 	}
+
+//controls input form for character creation
 
 	onChange(e){
 		this.setState({
@@ -122,21 +123,20 @@ class App extends Component {
 		})
 	}
 
+//pushes character information to a single character array, pushes that array to the server, and sets pagetracker to show battle information
+
 	clickEnter(){
-		let character = { name: this.state.name, class: this.state.classname, stats: this.state.stats}
+		let character = { name: this.state.name, class: this.state.classname, maxhp: this.state.maxhp, currenthp: this.state.currenthp, str: this.state.str, dex: this.state.dex, int: this.state.int, con:this.state.con, level: this.state.level}
 		this.setState({
 			pagetracker: 2,
-			name: '',
-			classname: 'Warrior',
-			class: 0,
-			stats: {},
 		})
 		Axios
 		.post('http://localhost:3030/api/character/', character)
-		.then(response => console.log(response.data))
+		.then(response => this.setState({character: response.data[0]}))
 		.catch(err=>console.log(err))
 	}
 
+//cycles between classes on the class selection page
 	nextClass() {
 		if (this.state.class !== 3) {
 			this.setState({
@@ -149,7 +149,6 @@ class App extends Component {
 			})
 		}
 	}
-
 	prevClass() {
 		if (this.state.class !== 0) {
 			this.setState({
@@ -169,7 +168,6 @@ class App extends Component {
 				<Header 
 				pagetracker={this.state.pagetracker} 
 				newGame={this.newGame} 
-				monsters={this.state.monsters} 
 				titleBook={this.titleBook}
 				/>
 				<Body 
@@ -182,6 +180,13 @@ class App extends Component {
 				onChange={this.onChange} 
 				pagetracker={this.state.pagetracker} 
 				clickEnter={this.clickEnter}
+				character={this.state.character}
+				maxhp={this.state.maxhp}
+				str={this.state.str}
+				dex={this.state.dex}
+				int={this.state.int}
+				con={this.state.con}
+				level={this.state.level}
 				/>
 			</div>
 		);

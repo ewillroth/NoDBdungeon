@@ -1,0 +1,16 @@
+.NextButton {
+	margin: 30% 2% 10% 0;
+	border: none;
+	text-decoration: none;
+	cursor: pointer;
+	background: #ffffff;
+	font-weight: bold;
+}
+
+.NextButton:hover {
+    transform: scale(1.25);
+}
+
+.NextButton:focus {
+	outline: #ffffff
+}

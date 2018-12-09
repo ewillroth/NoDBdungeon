@@ -1,17 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './WelcomePage.css';
 
-class WelcomePage extends Component {
+const WelcomePage = () =>{
 
-    render() {
-        return <div className="WelcomePage">
-            <p className="about">
-              NoDB Dungeon is a simple dungeon crawl game that uses the
-              D&D 5th Edition API
-            </p>
-            <img className= "logopic" src="#" alt="logopic" />
-          </div>;
-    }
+		return <div className="WelcomePage">
+			<h1 className="title">NoDB Dungeon</h1>
+			<p className="about">
+				NoDB Dungeon is a simple dungeon crawl game that uses the D&D 5th Edition API
+			</p>
+
+		</div>;
 }
 
 export default WelcomePage;

@@ -31,22 +31,54 @@ class CreateCharacter extends Component {
 		if (this.state.pagenumber === 0) {
 			display = 
 				<div className="CreateCharacter">
-					<CaptureName name={this.props.name} onChange={this.props.onChange}/>
-					<NextButton display='Next >'clickNext={this.clickNext}/>
+					<CaptureName 
+					name={this.props.name} 
+					onChange={this.props.onChange}
+					/>
+					<NextButton 
+					display='Next >'
+					clickNext={this.clickNext}
+					/>
 				</div>;
 		}
 		else if (this.state.pagenumber === 1) {
 			display = 
 				<div className="CreateCharacter">
-				<ChooseClass classname={this.props.classname} nextClass={this.props.nextClass} prevClass={this.props.prevClass} class={this.props.class} />
-					<NextButton display='< Previous'clickNext={this.clickPrev} />
-					<NextButton display='Next >' clickNext={this.clickNext} />
+					<ChooseClass 
+					classname={this.props.classname} 
+					nextClass={this.props.nextClass} 
+					prevClass={this.props.prevClass} 
+					class={this.props.class} 
+					maxhp={this.props.maxhp}
+					str={this.props.str}
+					dex={this.props.dex}
+					int={this.props.int}
+					con={this.props.con}
+					/>
+					<NextButton 
+					display='< Previous'
+					clickNext={this.clickPrev} 
+					/>
+					<NextButton 
+					display='Next >' 
+					clickNext={this.clickNext} 
+					/>
 				</div>;
 		}
 		else if (this.state.pagenumber === 2) {
 			display =
 				<div className="CreateCharacter">
-					<EnterDungeon clickEnter={this.props.clickEnter}/>
+					<EnterDungeon 
+					name={this.props.name}
+					clickEnter={this.props.clickEnter}
+					classname={this.props.classname}
+					maxhp={this.props.maxhp}
+					str={this.props.str}
+					dex={this.props.dex}
+					int={this.props.int}
+					con={this.props.con}
+					level={this.props.level}
+					/>
 				</div>;
 		}
 

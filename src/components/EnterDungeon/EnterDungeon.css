@@ -1,5 +1,12 @@
 .EnterDungeon {
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	align-items: center;
+	height: 60vh;
+}
+
+.boxAround {
+	border: 1px solid black;
+	margin: 20px 0px;
 }
