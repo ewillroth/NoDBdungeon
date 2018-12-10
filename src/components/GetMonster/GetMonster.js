@@ -7,6 +7,9 @@ import Defeat from '../Defeat/Defeat';
 import LevelUp from '../LevelUp/LevelUp';
 import CharSheet from '../CharSheet/CharSheet';
 import axios from 'axios';
+import tome from '../../art/tome.jpeg';
+import emptytome from '../../art/emptytome.jpeg';
+import wizard from "../../art/wizard.jpeg";
 
 class GetMonster extends Component {
 	constructor(props) {
@@ -27,7 +30,9 @@ class GetMonster extends Component {
 		this.continue = this.continue.bind(this);
 		this.pushCharacter = this.pushCharacter.bind(this);
 		this.levelup = this.levelup.bind(this);
-	}
+		this.openTome = this.openTome.bind(this);
+		this.throwAwayTome = this.throwAwayTome.bind(this);
+		}
 
 	componentDidUpdate(prevProps, prevState) {
 		if (this.state.character !== prevState.character) {
@@ -52,6 +57,18 @@ class GetMonster extends Component {
 		});
 	}
 
+	openTome(){
+		this.setState({
+			pagenumber: 7,
+		})
+	}
+
+	throwAwayTome(){
+		this.setState({
+			pagenumber: 8,
+		})
+	}
+
 	//gives the battle component a way to trigger the defeat page
 	defeat(message) {
 		this.setState({
@@ -69,11 +86,16 @@ class GetMonster extends Component {
 	}
 	//if levelup=true, show levelup, else show discovery
 	continue(xp) {
-		if (xp >= this.state.xprequired) {
+		if(this.state.battles===13) {
+			this.setState({
+				pagenumber: 6,
+			})
+		}
+		else if (xp >= this.state.xprequired) {
 			this.setState({
 				pagenumber: 4,
 				battles: this.state.battles + 1,
-				xprequired: this.state.xprequired * 2,
+				xprequired: this.state.xprequired + (this.state.xprequired-3),
 				xp: this.state.xp % this.state.xprequired
 			});
 		} else {
@@ -93,6 +115,7 @@ class GetMonster extends Component {
 	//Discovery>Battle>Defeat or
 	//Discovery>Battle>Victory>Discovery or
 	//Discovery>Battle>Victory>Levelup>CharacterSheet>Discovery
+	//Discovery>Battle>Victory>FinalVictory
 	render() {
 		let display = "";
 		if (this.state.pagenumber === 0) {
@@ -145,6 +168,30 @@ class GetMonster extends Component {
 					/>
 				</div>
 			);
+		} else if (this.state.pagenumber === 6) {
+			display = (
+				<div>
+					<img src={tome} alt="tome of ultimate coding knowledge"></img>
+					<p>Congratulations, you have found the tome of ultimate coding knowledge.</p>
+					<button onClick={this.openTome} className="NextButton">Open the tome></button>
+				</div>
+			)
+		} else if (this.state.pagenumber===7) {
+			display = (
+				<div>
+					<img src={emptytome} alt='empty book'></img>
+					<p>This tome is empty! What a rip off!</p>
+					<button onClick={this.throwAwayTome} className="NextButton">Throw away the tome</button>
+				</div>
+			)
+		}
+		else if (this.state.pagenumber===8) {
+			display = (
+				<div>
+					<img src={wizard} alt="wizard"></img>
+					<p>"There is no such thing as ultimate coding knowledge. Continue learning."</p>
+				</div>
+			)
 		}
 
 		return <>{display}</>;

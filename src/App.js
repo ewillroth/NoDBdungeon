@@ -16,7 +16,7 @@ class App extends Component {
 			currenthp: 50,
 			str: 4,
 			dex: 2,
-			int: 1,
+			int: 2,
 			con: 5,
 			monsters: [],
 			character: [],
@@ -50,7 +50,7 @@ class App extends Component {
 					currenthp: 50,
 					str: 4,
 					dex: 2,
-					int: 1,
+					int: 2,
 					con: 5,
 				})
 			}
@@ -59,8 +59,8 @@ class App extends Component {
 					classname: 'Rogue',
 					maxhp: 30,
 					currenthp: 30,
-					str: 3,
-					dex: 5,
+					str: 4,
+					dex: 6,
 					int: 2,
 					con: 3,
 				})
@@ -70,10 +70,10 @@ class App extends Component {
 					classname: 'Wizard',
 					maxhp: 30,
 					currenthp: 30,
-					str: 1,
+					str: 2,
 					dex: 1,
 					int: 5,
-					con: 2,
+					con: 3,
 				})
 			}
 			else if (this.state.class === 3) {
@@ -81,7 +81,7 @@ class App extends Component {
 					classname: 'Barbarian',
 					maxhp: 40,
 					currenthp: 40,
-					str: 5,
+					str: 7,
 					dex: 2,
 					int: 1,
 					con: 4,
