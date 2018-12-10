@@ -10,7 +10,7 @@ const Header = (props) => {
 	return (
 		<div className="Header">
 			<TitleButton 
-			titleBook={props.titleBook}
+			displayDirectory={props.displayDirectory}
 			/>
 			<NewGame 
 			newGame={props.newGame}
@@ -22,7 +22,7 @@ const Header = (props) => {
 		return (
 			<div className="Header">
 				<TitleButton 
-				titleBook={props.titleBook} 
+				displayDirectory={props.displayDirectory} 
 				/>
 			</div>
 		)

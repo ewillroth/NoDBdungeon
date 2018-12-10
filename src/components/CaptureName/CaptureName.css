@@ -1,0 +1,10 @@
+.CaptureName {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.CaptureName p {
+	margin: 10px 0px;
+	width: 60%;
+}

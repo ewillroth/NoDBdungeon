@@ -5,7 +5,7 @@ class TitleButton extends Component {
     render() {
         return (
             <div className="TitleButton">
-                <h3 onClick={this.props.titleBook}>NoDB Dungeon</h3>
+                <h3 onClick={this.props.displayDirectory}>NoDB Dungeon</h3>
             </div>
         );
     }

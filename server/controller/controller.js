@@ -4,7 +4,7 @@ const monsters = [];
 
 const character = [];
 
-const usefulmonsters = [ 107,149,42,250,75,134,259,220,216,76,168,261,281,115,325,148,139,188,92,56,113,84,114, 63,240,111,136,41,246,205,221,213,32,202,155,285,291,173,322 ]
+const usefulmonsters = [ 107,42,250,75,149,134,259,76,281,115,188,205,213,322 ]
 
 for(let i=0; i<usefulmonsters.length; i++){
 	axios
@@ -12,7 +12,7 @@ for(let i=0; i<usefulmonsters.length; i++){
 		.then(response => monsters.push({secretnumber: i,...response.data}))
 		.catch(err=>console.log(err))
 }
-
+ 
 const createCharacter = (req,res,next) => {
 	character.push(req.body)
 	res.status(200).json(character)

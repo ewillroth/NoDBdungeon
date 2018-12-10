@@ -1,9 +1,10 @@
 import React from 'react';
 import './EnterDungeon.css';
+import entrancepic from '../../art/entrance.jpeg'
 
 const EnterDungeon = (props) => {
 	return <div className="EnterDungeon">
-			<img src="#" alt="entrance pic" />
+
 			<div className="boxAround">
 				<p>{props.name}</p>
 				<p>Level {props.level} {props.classname}</p>
@@ -16,6 +17,7 @@ const EnterDungeon = (props) => {
 				</ul>
 			</div>
 			<button className="NextButton" onClick={props.clickEnter}>Enter Dungeon!</button>
+		<img src={entrancepic} alt="entrance pic" />
 		</div>;
 }
 

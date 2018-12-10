@@ -8,7 +8,8 @@ import TitleBook from '../TitleBook/TitleBook';
 const Body = props => {
 	let display = '';
 	if (props.pagetracker===0) 
-		{display = <WelcomePage />}
+		{display = <WelcomePage 
+		newGame={props.newGame}/>}
 	else if(props.pagetracker===1)
 		{display = <CreateCharacter 
 		classname={props.classname} 

@@ -24,7 +24,7 @@ class App extends Component {
 		}
 		this.clickEnter = this.clickEnter.bind(this)
 		this.newGame = this.newGame.bind(this)
-		this.titleBook = this.titleBook.bind(this)
+		this.displayDirectory = this.displayDirectory.bind(this)
 		this.onChange = this.onChange.bind(this)
 		this.nextClass = this.nextClass.bind(this)
 		this.prevClass = this.prevClass.bind(this)
@@ -90,7 +90,7 @@ class App extends Component {
 		}
 	}
 
-	titleBook(){
+	displayDirectory(){
 		this.setState({
 			pagetracker: 3,
 		})
@@ -168,9 +168,10 @@ class App extends Component {
 				<Header 
 				pagetracker={this.state.pagetracker} 
 				newGame={this.newGame} 
-				titleBook={this.titleBook}
+				displayDirectory={this.displayDirectory}
 				/>
 				<Body 
+				newGame={this.newGame}
 				monsters={this.state.monsters} 
 				classname={this.state.classname} 
 				class={this.state.class} 
