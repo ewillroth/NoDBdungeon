@@ -12,7 +12,7 @@ for(let i=0; i<usefulmonsters.length; i++){
 		.then(response => monsters.push({secretnumber: i,...response.data}))
 		.catch(err=>console.log(err))
 }
- 
+
 const createCharacter = (req,res,next) => {
 	character.push(req.body)
 	res.status(200).json(character)

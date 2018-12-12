@@ -37,8 +37,7 @@ class GetMonster extends Component {
 	componentDidUpdate(prevProps, prevState) {
 		if (this.state.character !== prevState.character) {
 			axios
-				.put("http://localhost:3030/api/character", this.state.character)
-				.then(response => console.log("Character updated"))
+				.put("api/character", this.state.character)
 				.then(() => this.props.pushCharacter(this.state.character))
 				.catch(err => console.log(err));
 		}

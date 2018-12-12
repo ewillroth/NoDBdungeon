@@ -27,7 +27,7 @@ class Discovery extends Component{
 	}
 	componentDidMount() {
 		axios
-			.get(`http://localhost:3030/api/monsters/${this.props.battles}`)
+			.get(`api/monsters/${this.props.battles}`)
 			.then(response => this.setState({ monster: response.data }))
 			.catch(err => console.log(err))
 	}

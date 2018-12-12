@@ -18,7 +18,7 @@ class TitleBook extends Component {
 	
 	componentDidMount(){
 		axios
-		.get('http://localhost:3030/api/monsters')
+		.get('api/monsters')
 		.then(response => this.setState({
 			monsters:response.data
 		}))
