@@ -31,7 +31,7 @@ class LevelUp extends Component {
 
 	componentDidMount() {
 		axios
-			.get("http://localhost:3030/api/character")
+			.get("api/character")
 			.then(response =>
 				this.setState({
 					character: response.data[0],

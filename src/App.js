@@ -34,7 +34,7 @@ class App extends Component {
 
 	componentDidMount() {
 		Axios
-			.get('http://localhost:3030/api/monsters')
+			.get('api/monsters')
 			.then(response => this.setState({ monsters: response.data }))
 			.catch(err => console.log(err))
 	}
@@ -112,7 +112,7 @@ class App extends Component {
 			con: 4,
 			level: 1
 		})
-		Axios.delete('http://localhost:3030/api/character').then().catch(err=>console.log(err))
+		Axios.delete('api/character').then().catch(err=>console.log(err))
 	}
 
 //controls input form for character creation
@@ -131,7 +131,7 @@ class App extends Component {
 			pagetracker: 2,
 		})
 		Axios
-		.post('http://localhost:3030/api/character/', character)
+		.post('api/character/', character)
 		.then(response => this.setState({character: response.data[0]}))
 		.catch(err=>console.log(err))
 	}

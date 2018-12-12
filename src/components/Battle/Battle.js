@@ -33,7 +33,7 @@ class Battle extends Component {
 	//retrieves character from server, assigns it to state, and pushes it to parent state
 	componentDidMount() {
 		axios
-			.get(`http://localhost:3030/api/character`)
+			.get(`api/character`)
 			.then(response => this.setState({ character: response.data[0] }))
 			.then(()=>this.props.pushCharacter(this.state.character))
 			.catch(err => console.log(err));
@@ -42,8 +42,7 @@ class Battle extends Component {
 	componentDidUpdate(prevProps,prevState){
 		if(this.state.character!==prevState.character){
 			axios
-			.put('http://localhost:3030/api/character', this.state.character)
-			.then(response=>console.log("Character updated"))
+			.put('api/character', this.state.character)
 			.then(() => this.props.pushCharacter(this.state.character))
 			.catch(err=>console.log(err))
 		}
