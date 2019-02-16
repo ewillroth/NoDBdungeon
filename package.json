@@ -5,12 +5,11 @@
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
-    "cons": "0.0.2",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1"
+    "react-scripts": "^2.1.5"
   },
   "scripts": {
     "start": "react-scripts start",
